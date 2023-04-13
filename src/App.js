@@ -10,7 +10,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Switch, Route } from "react-router-dom";
-export const URL="http://localhost:5007"
+export const URL="https://amazon-clone-9jxl.onrender.com"
 
 function App() {
   const [data, setData] = useState(false);
