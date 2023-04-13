@@ -60,7 +60,7 @@ const Sign_in = () => {
                 toast.success("Login Successfully done 😃!", {
                     position: "top-center"
                 });
-                console.log(data,logdata)
+                // console.log(data,logdata)
             }
         } catch (error) {
             console.log("login page ka error" + error.message);

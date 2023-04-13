@@ -19,28 +19,32 @@ const Cart = () => {
 
     const history = useHistory();
 
-    const [inddata, setIndedata] = useState("");
+    const [inddata, setInddata] = useState("");
 
     // console.log([inddata]);
 
     const getinddata = async () => {
-        const res = await fetch(`${URL}/getproductsone/${id}`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        });
-
-        const data = await res.json();
-        // console.log(data);
-
-        if (res.status !== 201) {
-            alert("no data available")
-        } else {
-            // console.log("ind mila hain");
-            setIndedata(data);
+        try {
+            const res = await fetch(`${URL}/getproductsone/${id}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
+            });
+    
+            const data = await res.json();
+            // console.log(data);
+    
+            if (res.status !== 201) {
+                alert("no data available")
+            } else {
+                // console.log("ind mila hain");
+                setInddata(data);
+            }
+        } catch (error) {
+            console.log(error)
         }
     };
 
@@ -50,27 +54,31 @@ const Cart = () => {
 
     const addtocart = async (id) => {
         console.log(id);
-        const check = await fetch(`${URL}/addcart/${id}`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                inddata
-            }),
-            credentials: "include"
-        });
-        // console.log(check);
-        const data1 = await check.json();
-        // console.log(data1 +  'ok');
-
-        if (check.status !== 201) {
-            alert("no data available")
-        } else {
-            // console.log("cart add ho gya hain");
-            setAccount(data1)
-            history.push("/buynow");
+        try {
+            const check = await fetch(`${URL}/addcart/${id}`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    inddata
+                }),
+                credentials: "include"
+            });
+            // console.log(check);
+            const data1 = await check.json();
+            // console.log(data1 +  'ok');
+    
+            if (check.status !== 201) {
+                alert("no data available")
+            } else {
+                // console.log("cart add ho gya hain");
+                setAccount(data1)
+                history.push("/buynow");
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 

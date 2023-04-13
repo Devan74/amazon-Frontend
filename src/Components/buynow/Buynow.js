@@ -13,23 +13,27 @@ const Buynow = () => {
     // console.log(cartdata.length);
 
     const getdatabuy = async () => {
-        const res = await fetch(`${URL}/cartdetails`, {
-            method: "GET",
-            headers: {
-                Accept:"application/json",
-                "Content-Type": "application/json"
-            },
-            credentials:"include"
-        });
-
-        const data = await res.json();
-        // console.log(data.carts);
-
-        if (res.status !== 201) {
-            alert("no data available")
-        } else {
-            // console.log("data cart main hain");
-            setCartdata(data.carts);
+        try {
+            const res = await fetch(`${URL}/cartdetails`, {
+                method: "GET",
+                headers: {
+                    Accept:"application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials:"include"
+            });
+    
+            const data = await res.json();
+            // console.log(data.carts);
+    
+            if (res.status !== 201) {
+                alert("no data available")
+            } else {
+                // console.log("data cart main hain");
+                setCartdata(data.carts);
+            }
+        } catch (error) {
+            console.log(error)
         }
     };
 
