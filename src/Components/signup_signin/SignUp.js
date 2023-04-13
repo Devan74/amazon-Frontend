@@ -76,7 +76,7 @@ const Signup = () => {
                     <form method="POST">
                         <h1>Create account</h1>
                         <div className="form_data">
-                            <label htmlFor="name">Your name</label>
+                            <label htmlFor="name">Your Name</label>
                             <input type="text" name="fname"
                                 onChange={adddata}
                                 value={udata.fname}
